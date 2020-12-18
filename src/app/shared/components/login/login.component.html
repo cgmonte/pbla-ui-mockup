@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- <title>{{title}}</title> -->
+</head>
+
+<body>
+    <mat-card class="container">
+        <mat-card-title>PBL Analytics</mat-card-title>
+        <br>
+        <mat-card-content>
+            <mat-form-field appearance="fill">
+                <mat-label>Usuário</mat-label>
+                <input matInput type='text'>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Senha</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </mat-card-content>
+    </mat-card>
+
+</body>
+
+</html>

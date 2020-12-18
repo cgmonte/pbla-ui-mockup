@@ -1,18 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from "@angular/router";
+import { SharedModule } from './shared/shared.module'; // 👈 <-- Added
+import { LoginComponent } from './shared/components/login/login.component';
+import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
+
+const appRoutes: Routes = [
+  { path: "login", component: LoginComponent },
+  { path: "nav", component: SidenavComponent }
+]
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    SharedModule, // 👈 <-- Added
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
