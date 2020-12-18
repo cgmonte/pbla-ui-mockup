@@ -6,6 +6,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
   styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit {
+  title = 'PBL Analytics - Navegação';
   themeColor: 'primary' | 'accent' | 'warn' = 'primary'; // 👈 notice this
   isDark = false; // 👈 notice this
   constructor(private overlayContainer: OverlayContainer) {}
