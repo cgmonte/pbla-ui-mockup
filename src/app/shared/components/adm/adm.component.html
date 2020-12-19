@@ -7,12 +7,40 @@
 </head>
 
 <body>
-    <div>
-        <mat-toolbar>
-            <span><h1 class="toolbar-title">PBL Analytics</h1></span>
-            <span class="example-spacer"></span>
-            <a mat-flat-button color="primary" href="/login">Sair</a>
-        </mat-toolbar>
+    <div class="parent">
+        <div class="first-child">
+            <mat-toolbar class=mat-elevation-z4>
+                <span>
+                    <h1 class="toolbar-title">PBL Analytics</h1>
+                </span>
+                <span class="example-spacer"></span>
+                <a mat-flat-button color="primary" href="/login">Sair</a>
+            </mat-toolbar>
+        </div>
+        <div class="second-child">
+            <mat-sidenav-container class="sidenav-container">
+                <mat-sidenav #sidenav mode="side" opened [attr.color]="themeColor">
+                    <mat-nav-list>
+                        <h1>Sidenav</h1>
+                        <a mat-list-item href="#">Link 1</a>
+                        <a mat-list-item href="#">Link 2</a>
+                        <a mat-list-item href="#">Link 3</a>
+                    </mat-nav-list>
+                </mat-sidenav>
+                <mat-sidenav-content>
+                    <div class="container">
+                        <h1 class="mat-display-3">Instituição</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis nobis illum animi
+                            temporibus
+                            omnis. Consequatur qui fugit facilis reiciendis deserunt, debitis beatae! Illo dolorem
+                            asperiores nisi excepturi eum veritatis cupiditate.
+                        </p>
+                    </div>
+                    <ng-content></ng-content>
+                </mat-sidenav-content>
+            </mat-sidenav-container>
+        </div>
     </div>
 </body>
 
