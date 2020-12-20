@@ -1,21 +1,26 @@
 .mat-toolbar {
     min-height: fit-content;
-    position: relative;
-    // padding-right: 10%;
-}
-
-.inter-button-spacer {
-    flex-basis: 10px;
-}
-
-.title-button-spacer {
-    flex: 1 1 auto;
-    // flex-grow: 35;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 #section-title {
     color: #00b0ff;
-    position: absolute;
-    // margin-left: 5%;
-    // transform: 40, 40;
+    padding: 0px;
+    margin: 0px;
+    flex-grow: 1;
+}
+
+.title-buttons-spacer {
+    flex-grow: 100;
+}
+
+#entity-buttons {
+    color: #01579b;
+    flex-grow: 1;
+}
+
+#excluir-button {
+    margin-left: 10px;
 }

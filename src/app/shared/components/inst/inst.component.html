@@ -8,14 +8,16 @@
 
 <body>
     <mat-toolbar>
-        <span>
+        <!-- <div id="sub-toolbar-container"> -->
+        <span class="title-span">
             <h1 class="mat-display-3" id="section-title">Instituições</h1>
         </span>
-        <span class="title-button-spacer"></span>
-        <a mat-stroked-button="basic" href="/login">Excluir</a>
-        <span class="inter-button-spacer"></span>
-        <a mat-stroked-button="basic" href="/login">Cadastrar</a>
-
+        <span class="title-buttons-spacer"></span>
+        <div id="entity-buttons">
+            <a mat-stroked-button basic href="/login">Cadastrar</a>
+            <a id="excluir-button" mat-stroked-button disabled href="/login">Excluir</a>
+        </div>
+        <!-- </div> -->
     </mat-toolbar>
 </body>
 
