@@ -1,0 +1,21 @@
+.mat-toolbar {
+    min-height: fit-content;
+    position: relative;
+    // padding-right: 10%;
+}
+
+.inter-button-spacer {
+    flex-basis: 10px;
+}
+
+.title-button-spacer {
+    flex: 1 1 auto;
+    // flex-grow: 35;
+}
+
+#section-title {
+    color: #00b0ff;
+    position: absolute;
+    // margin-left: 5%;
+    // transform: 40, 40;
+}

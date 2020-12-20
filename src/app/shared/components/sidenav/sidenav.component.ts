@@ -7,7 +7,8 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 })
 export class SidenavComponent implements OnInit {
   title = 'PBL Analytics - Navegação';
-  themeColor: 'primary' | 'accent' | 'warn' = 'primary'; // 👈 notice this
+  themeColor: 'primary' | 'accent' | 'warn' = 'primary';
+  // themeColor: 'primary' | 'accent' | 'warn' = 'primary';
   isDark = false; // 👈 notice this
   constructor(private overlayContainer: OverlayContainer) {}
   ngOnInit(): void {}

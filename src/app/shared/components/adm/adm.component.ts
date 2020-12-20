@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {AppRoutingModule} from '../../../app-routing.module'
 
 @Component({
   selector: 'app-adm',
@@ -8,7 +7,8 @@ import {AppRoutingModule} from '../../../app-routing.module'
 })
 export class AdmComponent implements OnInit {
   title = 'PBL Analytics - Administração';
-  themeColor: 'primary' | 'accent' | 'warn' = 'primary'; // 👈 notice this
+  themeColor: 'primary' | 'accent' | 'warn' = 'primary';
+  
   constructor() { }
 
   ngOnInit(): void {

@@ -6,13 +6,15 @@
     color: #01579b;
 }
 
-.mat-display-3 {
-    color: #00b0ff;
-}
+// .mat-display-3 {
+//     color: #00b0ff;
+// }
 
 .example-spacer {
     flex: 1 1 auto;
 }
+
+
 
 .parent {
     position: relative;
@@ -26,8 +28,8 @@
 .second-child {
     min-height: calc(100vh - 64px);
     margin-top: 2%;
-    margin-left: 3%;
-    margin-right: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
     height: calc(100vh - 64px);
 
     .sidenav-container {
@@ -47,9 +49,9 @@
             // padding-left: 3%;
             // padding-right: 3%;
             // padding-top: 2%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            // display: flex;
+            // flex-direction: column;
+            // align-items: flex-start;
             background-color: rgb(245, 245, 245);
             // min-height: fit-content;
         }

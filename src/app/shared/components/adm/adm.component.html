@@ -23,7 +23,7 @@
                     <mat-nav-list #hasBackdrop>
                         <!-- <h1>Sidenav</h1> -->
                         <a mat-list-item
-                            [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'nav' } }]">Instituição</a>
+                            [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'inst' } }]">Instituições</a>
                         <a mat-list-item>Cursos</a>
                         <a mat-list-item>Disciplinas</a>
                         <a mat-list-item>Turmas</a>
@@ -35,7 +35,7 @@
                     <div class=" container">
                         <router-outlet name="sidenav-content-outlet"></router-outlet>
                     </div>
-                    <ng-content></ng-content>
+                    <!-- <ng-content></ng-content> -->
                 </mat-sidenav-content>
             </mat-sidenav-container>
         </div>
