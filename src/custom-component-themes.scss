@@ -1,3 +1,8 @@
-// import custom components themes
+// import custom component themes
+// unofficial naming convention to support nice ordering of files in IDE 
+// to see theme under the original style file of the component
+@import './app/shared/components/sidenav/sidenav.component.scss-theme.scss';
 // you only have to add additional components here (instead of in every theme class)
-@mixin custom-components-theme($theme) {}
+@mixin custom-components-theme($theme) {
+    @include sidenav-component-theme($theme);
+}
