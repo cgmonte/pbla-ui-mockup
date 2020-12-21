@@ -19,7 +19,7 @@
     margin-left: 20px;
     margin-top: 1.5%;
     // width: 100%;
-  }
+}
 
 .title-buttons-spacer {
     flex-grow: 100;
@@ -36,7 +36,7 @@
 }
 
 .table-container {
-    height: 59vh;
+    height: 55vh;
     overflow: auto;
     margin-top: 5%;
     margin-left: 1%;
@@ -47,4 +47,17 @@ table {
     // margin-right: 9%;
     width: 100%;
     background-color: rgb(245, 245, 245);
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.mat-paginator{
+    background-color: rgb(245, 245, 245);
+}
+
+td,
+th {
+    width: 25%;
 }
