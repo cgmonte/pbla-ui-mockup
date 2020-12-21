@@ -12,9 +12,14 @@ import { MatPaginator } from '@angular/material/paginator';
 export class InstComponent implements OnInit {
   title = 'PBL Analytics - Insituições';
   themeColor: 'primary' | 'accent' | 'warn' = 'primary';
-  displayedColumns = ['select' ,'position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['select', 'position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
+  
+  anySelected = true;
+  changeCheck(event){
+    this.anySelected = !event.checked;
+  }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -49,6 +54,18 @@ export class InstComponent implements OnInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
+
+  // enableExcluir() {
+  //   // console.log("opa!")
+  //   const numSelected = this.selection.selected.length;
+  //   if (numSelected > 0) {
+  //     this.excluir_button_state = false;
+  //   }
+  //   else {
+  //     this.excluir_button_state = true;
+  //   }
+  // }
+
 
   constructor() { }
 

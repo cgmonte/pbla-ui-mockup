@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap");
 // 👇 1. Default theme
 $pbla-ui-primary: mat-palette($mat-light-blue, A400);
-$pbla-ui-accent: mat-palette($mat-pink, A200, A100, A400);
+$pbla-ui-accent: mat-palette($mat-light-blue, 900);
 $pbla-ui-warn: mat-palette($mat-red);
 $pbla-ui-theme: mat-light-theme(
     $pbla-ui-primary,
