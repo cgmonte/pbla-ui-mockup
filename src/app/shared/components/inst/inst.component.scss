@@ -1,4 +1,5 @@
 .mat-toolbar {
+    // position: sticky;
     min-height: fit-content;
     display: flex;
     flex-direction: row;
@@ -23,4 +24,24 @@
 
 #excluir-button {
     margin-left: 10px;
+}
+
+#table-container-reference-div {
+    height: 10%;
+    // padding-bottom: 300px;
+}
+
+.table-container {
+    // height:fit-content;
+
+    height: 59vh;
+    overflow: auto;
+    margin-top: 5%;
+    margin-left: 1%;
+}
+
+table {
+    // margin-right: 9%;
+    width: 100%;
+    background-color: rgb(245, 245, 245);
 }

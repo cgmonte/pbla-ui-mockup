@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule, } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   exports: [
     MatSidenavModule,
@@ -28,7 +29,8 @@ import { MatCardModule } from '@angular/material/card';
     MatListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule
   ],
 })
-export class MaterialModule {}
+export class MaterialModule { }
