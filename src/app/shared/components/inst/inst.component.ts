@@ -15,10 +15,15 @@ export class InstComponent implements OnInit {
   displayedColumns = ['select', 'position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
-  
+
   anySelected = true;
-  changeCheck(event){
-    this.anySelected = !event.checked;
+  changeCheck(event) {
+    if (this.selection.selected.length > 0) {
+      this.anySelected = false;
+    }
+    else {
+      this.anySelected = true;
+    }
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
