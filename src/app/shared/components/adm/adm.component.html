@@ -18,19 +18,17 @@
             </mat-toolbar>
         </div>
         <div class="second-child">
-            <mat-sidenav-container class="sidenav-container" [hasBackdrop]="hasBackdrop.value">
+            <mat-sidenav-container class="sidenav-container">
             <!-- <mat-sidenav #sidenav mode="side" opened [attr.color]="themeColor"></mat-sidenav> -->
                 <mat-sidenav #sidenav mode="side" opened>
-                    <mat-nav-list #hasBackdrop>
-                        <!-- <h1>Sidenav</h1> -->
-                        <a mat-list-item
-                            [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'inst' } }]">Instituições</a>
-                        <a mat-list-item>Cursos</a>
-                        <a mat-list-item>Disciplinas</a>
-                        <a mat-list-item>Turmas</a>
-                        <a mat-list-item>Equipes</a>
-                        <a mat-list-item>Usuários</a>
-                    </mat-nav-list>
+                    <mat-selection-list [multiple]="false">
+                        <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'inst' } }]">Instituições</mat-list-option>
+                        <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'inst' } }]">Cursos</mat-list-option>
+                        <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'inst' } }]">Disciplinas</mat-list-option>
+                        <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'inst' } }]">Turmas</mat-list-option>
+                        <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'inst' } }]">Equipes</mat-list-option>
+                        <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'inst' } }]">Usuários</mat-list-option>
+                    </mat-selection-list>
                 </mat-sidenav>
                 <mat-sidenav-content>
                     <div>
