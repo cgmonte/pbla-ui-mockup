@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-inst',
@@ -9,8 +10,13 @@ export class InstComponent implements OnInit {
   title = 'PBL Analytics - Insituições';
   themeColor: 'primary' | 'accent' | 'warn' = 'primary';
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
-
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  
   constructor() { }
 
   ngOnInit(): void {
