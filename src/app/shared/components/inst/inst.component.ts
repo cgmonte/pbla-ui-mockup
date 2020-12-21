@@ -12,7 +12,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class InstComponent implements OnInit {
   title = 'PBL Analytics - Insituições';
   themeColor: 'primary' | 'accent' | 'warn' = 'primary';
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['select' ,'position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 

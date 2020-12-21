@@ -10,15 +10,17 @@
     color: #00b0ff;
     padding: 0px;
     margin: 0px;
-    flex-grow: 1;
+    // flex-grow: 1;
+    flex-shrink: 10;
 }
 
 #form-field-filtro {
     font-size: 10px;
-    flex-grow: 1;
+    // flex-grow: 1;
+    flex-shrink: 30;
     margin-left: 20px;
-    margin-top: 1.5%;
-    // width: 100%;
+    margin-top: 2.5vh;
+    max-width: 20vh;
 }
 
 .title-buttons-spacer {
@@ -27,16 +29,23 @@
 
 #entity-buttons {
     color: #01579b;
-    flex-grow: 1;
+    // flex-grow: 1;
     margin-top: 1%;
+    flex-shrink: 30;
+
 }
 
 #excluir-button {
     margin-left: 10px;
 }
 
+#cadastrar-button {
+    margin-left: 10px;
+}
+
+
 .table-container {
-    height: 55vh;
+    height: 57vh;
     overflow: auto;
     margin-top: 5%;
     margin-left: 1%;
@@ -53,7 +62,7 @@ th.mat-sort-header-sorted {
     color: black;
 }
 
-.mat-paginator{
+.mat-paginator {
     background-color: rgb(245, 245, 245);
 }
 
