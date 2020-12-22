@@ -10,7 +10,7 @@
   <mat-toolbar>
     <!-- <div id="sub-toolbar-container"> -->
     <span class="title-span">
-      <h1 class="mat-display-3" id="section-title">Instituições</h1>
+      <h1 class="mat-display-3" id="section-title">{{title}}</h1>
     </span>
 
     <mat-form-field appearance="fill" id="form-field-filtro">
@@ -20,67 +20,58 @@
 
     <span class="title-buttons-spacer"></span>
     <div id="entity-buttons">
-      <a id="excluir-button" mat-stroked-button basic href="/login">Cadastrar</a>
+      <a id="excluir-button" mat-stroked-button basic (click)=toggleDisplay()>Cadastrar</a>
       <a id="excluir-button" mat-stroked-button [disabled]="anySelected" href="/login">Excluir</a>
     </div>
     <!-- </div> -->
   </mat-toolbar>
 
-  <div class="table-container">
+  <div class="table-container" *ngIf="!isShow">
     <table mat-table [dataSource]="dataSource" matSort>
 
       <ng-container matColumnDef="select">
         <th mat-header-cell *matHeaderCellDef style="width: 10%">
-          <mat-checkbox (change)="$event ? masterToggle() : null"
-                        (change)="changeCheck($event)"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()"
-                        [aria-label]="checkboxLabel()">
+          <mat-checkbox (change)="$event ? masterToggle() : null" (change)="changeCheck($event)"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
           </mat-checkbox>
         </th>
         <td mat-cell *matCellDef="let row" style="width: 10%">
-          <mat-checkbox (click)="$event.stopPropagation()"
-                        (change)="$event ? selection.toggle(row) : null"
-                        (change)="changeCheck($event)"
-                        [checked]="selection.isSelected(row)"
-                        [aria-label]="checkboxLabel(row)">
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+            (change)="changeCheck($event)" [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
           </mat-checkbox>
         </td>
       </ng-container>
 
       <!-- Position Column -->
 
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      <ng-container matColumnDef="inst_nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.inst_nome}} </td>
       </ng-container>
 
       <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <ng-container matColumnDef="inst_cnpj">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CNPJ </th>
+        <td mat-cell *matCellDef="let element"> {{element.inst_cnpj}} </td>
       </ng-container>
 
       <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
-        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      <ng-container matColumnDef="inst_obs">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> OBS </th>
+        <td mat-cell *matCellDef="let element"> {{element.inst_obs}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr> -->
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 
   </div>
 
-  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  <div class="form-container" *ngIf="isShow">"funciona!"</div>
+
 
 </body>
 

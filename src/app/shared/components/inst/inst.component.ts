@@ -10,11 +10,16 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./inst.component.scss']
 })
 export class InstComponent implements OnInit {
-  title = 'PBL Analytics - Insituições';
+  title = 'Insituições';
   themeColor: 'primary' | 'accent' | 'warn' = 'primary';
-  displayedColumns = ['select', 'position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['select', 'inst_nome', 'inst_cnpj', 'inst_obs'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
+  
+  isShow = false;
+  toggleDisplay() {
+    this.isShow = !this.isShow;
+  }
 
   anySelected = true;
   changeCheck(event) {
@@ -57,20 +62,8 @@ export class InstComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.inst_nome + 1}`;
   }
-
-  // enableExcluir() {
-  //   // console.log("opa!")
-  //   const numSelected = this.selection.selected.length;
-  //   if (numSelected > 0) {
-  //     this.excluir_button_state = false;
-  //   }
-  //   else {
-  //     this.excluir_button_state = true;
-  //   }
-  // }
-
 
   constructor() { }
 
@@ -79,91 +72,26 @@ export class InstComponent implements OnInit {
 }
 
 export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  inst_nome: string;
+  inst_cnpj: string;
+  inst_obs: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Qualquer', weight: 20.1797, symbol: 'Ne' }
+  { inst_nome: 'Cesar School', inst_cnpj: '01.203.327/0001-23', inst_obs: 'Nenhuma' },
+  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' },
+  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' },
+  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' },
+  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' },
+  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' },
+  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' },
+  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' },
+  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' },
+  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' },
+  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' },
+  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' },
+  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' },
+  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' },
+  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' }
+
 ];
