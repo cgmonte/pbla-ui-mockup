@@ -5,17 +5,17 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-inst',
-  templateUrl: './inst.component.html',
-  styleUrls: ['./inst.component.scss']
+  selector: 'app-integra',
+  templateUrl: './integra.component.html',
+  styleUrls: ['./integra.component.scss']
 })
-export class InstComponent implements OnInit {
-  title = 'Insituições';
+export class IntegraComponent implements OnInit {
+  title = 'Integrações';
   themeColor: 'primary' | 'accent' | 'warn' = 'primary';
-  displayedColumns = ['select', 'inst_nome', 'inst_cnpj', 'inst_obs'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
-  
+  displayedColumns = ['select', 'tool_nome', 'tool_status', 'tool_obs'];
+  dataSource = new MatTableDataSource<Ferramentas>(ELEMENT_DATA);
+  selection = new SelectionModel<Ferramentas>(true, []);
+
   isShow = false;
   toggleDisplay() {
     this.isShow = true;
@@ -61,11 +61,11 @@ export class InstComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PeriodicElement): string {
+  checkboxLabel(row?: Ferramentas): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.inst_nome + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.tool_nome + 1}`;
   }
 
   constructor() { }
@@ -74,13 +74,13 @@ export class InstComponent implements OnInit {
   }
 }
 
-export interface PeriodicElement {
-  inst_nome: string;
-  inst_cnpj: string;
-  inst_obs: string;
+export interface Ferramentas {
+  tool_nome: string;
+  tool_status: string;
+  tool_obs: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { inst_nome: 'Cesar School', inst_cnpj: '01.203.327/0001-23', inst_obs: 'Nenhuma' },
-  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' }
+const ELEMENT_DATA: Ferramentas[] = [
+  { tool_nome: 'Google Drive', tool_status: 'Não integrado', tool_obs: 'Nenhuma' },
+  // { tool_nome: 'Instituto Federal de Pernambuco', tool_status: '02.403.237/0005-28', tool_obs: 'Nenhuma' }
 ];

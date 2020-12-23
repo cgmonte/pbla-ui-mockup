@@ -44,21 +44,21 @@
       </ng-container>
 
       <!-- Position Column -->
-      <ng-container matColumnDef="inst_nome">
+      <ng-container matColumnDef="tool_nome">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
-        <td mat-cell *matCellDef="let element"> {{element.inst_nome}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.tool_nome}} </td>
       </ng-container>
 
       <!-- Name Column -->
-      <ng-container matColumnDef="inst_cnpj">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> CNPJ </th>
-        <td mat-cell *matCellDef="let element"> {{element.inst_cnpj}} </td>
+      <ng-container matColumnDef="tool_status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.tool_status}} </td>
       </ng-container>
 
       <!-- Weight Column -->
-      <ng-container matColumnDef="inst_obs">
+      <ng-container matColumnDef="tool_obs">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> OBS </th>
-        <td mat-cell *matCellDef="let element"> {{element.inst_obs}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.tool_obs}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>

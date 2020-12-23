@@ -11,9 +11,11 @@ import { DisciplinasComponent } from './components/disciplinas/disciplinas.compo
 import { TurmasComponent } from './components/turmas/turmas.component';
 import { EquipesComponent } from './components/equipes/equipes.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { ConfigEstComponent } from './components/config-est/config-est.component';
+import { IntegraComponent } from './components/integra/integra.component';
 
 @NgModule({
-  declarations: [LoginComponent, AdmComponent, SidenavComponent, InstComponent, CursosComponent, DisciplinasComponent, TurmasComponent, EquipesComponent, UsuariosComponent],
+  declarations: [LoginComponent, AdmComponent, SidenavComponent, InstComponent, CursosComponent, DisciplinasComponent, TurmasComponent, EquipesComponent, UsuariosComponent, ConfigEstComponent, IntegraComponent],
   imports: [CommonModule, MaterialModule, RouterModule],
   exports: [LoginComponent, AdmComponent, SidenavComponent, InstComponent, CursosComponent, DisciplinasComponent], // 👈 added
 })

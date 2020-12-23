@@ -13,7 +13,8 @@ import { DisciplinasComponent } from './shared/components/disciplinas/disciplina
 import { TurmasComponent } from './shared/components/turmas/turmas.component';
 import { EquipesComponent } from './shared/components/equipes/equipes.component';
 import { UsuariosComponent } from './shared/components/usuarios/usuarios.component';
-
+import { ConfigEstComponent } from './shared/components/config-est/config-est.component';
+import { IntegraComponent } from './shared/components/integra/integra.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
   { path: "adm", component: AdmComponent, children: [{ path: "disciplinas", component: DisciplinasComponent, outlet: "sidenav-content-outlet" }] },
   { path: "adm", component: AdmComponent, children: [{ path: "turmas", component: TurmasComponent, outlet: "sidenav-content-outlet" }] },
   { path: "adm", component: AdmComponent, children: [{ path: "equipes", component: EquipesComponent, outlet: "sidenav-content-outlet" }] },
-  { path: "adm", component: AdmComponent, children: [{ path: "usuarios", component: UsuariosComponent, outlet: "sidenav-content-outlet" }] }
+  { path: "adm", component: AdmComponent, children: [{ path: "usuarios", component: UsuariosComponent, outlet: "sidenav-content-outlet" }] },
+  { path: "config-est", component: ConfigEstComponent, children: [{ path: "integra", component: IntegraComponent, outlet: "sidenav-content-outlet" }] }
 
 ]
 
