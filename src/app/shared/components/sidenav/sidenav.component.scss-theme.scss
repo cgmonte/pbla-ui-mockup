@@ -7,11 +7,15 @@
   $warn: map-get($theme, warn);
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
+  $custom-background-color: rgb(251,251,251,);
+  $background: map_merge($background, (background: $custom-background-color));
+  $theme: map_merge($theme, (background: $background));
 
   .mat-sidenav{
     // let's take mat-toolbar's default theme
     // ref: https://github.com/angular/material2/blob/88601fa51d581f538468a9b63890b0e285e519cb/src/lib/toolbar/_toolbar-theme.scss#L39
-    background-color: mat-color($background, app-bar);
+    // background-color: mat-color($background, app-bar);
+    background-color: rgb(251, 251, 251);
     color: mat-color($foreground, text);
 
     // now, mat-toolbar's colored themes

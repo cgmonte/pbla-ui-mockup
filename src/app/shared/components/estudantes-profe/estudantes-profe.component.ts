@@ -5,17 +5,17 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-integra',
-  templateUrl: './integra.component.html',
-  styleUrls: ['./integra.component.scss']
+  selector: 'app-estudantes-profe',
+  templateUrl: './estudantes-profe.component.html',
+  styleUrls: ['./estudantes-profe.component.scss']
 })
-export class IntegraComponent implements OnInit {
-  title = 'Integrações';
+export class EstudantesProfeComponent implements OnInit {
+  title = 'Estudantes';
   themeColor: 'primary' | 'accent' | 'warn' = 'primary';
-  displayedColumns = ['ícon', 'tool_nome', 'tool_status'];
-  dataSource = new MatTableDataSource<Ferramentas>(ELEMENT_DATA);
-  selection = new SelectionModel<Ferramentas>(true, []);
-
+  displayedColumns = ['select', 'estudante_nome', 'estudante_email', 'estudante_obs'];
+  dataSource = new MatTableDataSource<EstudantesFake>(ELEMENT_DATA);
+  selection = new SelectionModel<EstudantesFake>(true, []);
+  
   isShow = false;
   toggleDisplay() {
     this.isShow = true;
@@ -61,11 +61,11 @@ export class IntegraComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: Ferramentas): string {
+  checkboxLabel(row?: EstudantesFake): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.tool_nome + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.estudante_nome + 1}`;
   }
 
   constructor() { }
@@ -74,13 +74,13 @@ export class IntegraComponent implements OnInit {
   }
 }
 
-export interface Ferramentas {
-  tool_nome: string;
-  tool_status: string;
-  tool_obs: string;
+export interface EstudantesFake {
+  estudante_nome: string;
+  estudante_cpf: string;
+  estudante_email: string;
+  estudante_obs: string;
 }
 
-const ELEMENT_DATA: Ferramentas[] = [
-  { tool_nome: 'Google Drive', tool_status: 'Não integrado', tool_obs: 'Nenhuma' },
-  // { tool_nome: 'Instituto Federal de Pernambuco', tool_status: '02.403.237/0005-28', tool_obs: 'Nenhuma' }
+const ELEMENT_DATA: EstudantesFake[] = [
+  { estudante_nome: 'André Araujo', estudante_cpf: '092.721.328-90', estudante_email: 'andre@cesa.school', estudante_obs: 'Nenhuma' }
 ];

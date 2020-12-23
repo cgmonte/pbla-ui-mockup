@@ -15,6 +15,8 @@ import { EquipesComponent } from './shared/components/equipes/equipes.component'
 import { UsuariosComponent } from './shared/components/usuarios/usuarios.component';
 import { ConfigEstComponent } from './shared/components/config-est/config-est.component';
 import { IntegraComponent } from './shared/components/integra/integra.component';
+import { AnaProfeComponent } from './shared/components/ana-profe/ana-profe.component';
+import { EstudantesProfeComponent } from './shared/components/estudantes-profe/estudantes-profe.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -28,7 +30,8 @@ const appRoutes: Routes = [
   { path: "adm", component: AdmComponent, children: [{ path: "turmas", component: TurmasComponent, outlet: "sidenav-content-outlet" }] },
   { path: "adm", component: AdmComponent, children: [{ path: "equipes", component: EquipesComponent, outlet: "sidenav-content-outlet" }] },
   { path: "adm", component: AdmComponent, children: [{ path: "usuarios", component: UsuariosComponent, outlet: "sidenav-content-outlet" }] },
-  { path: "config-est", component: ConfigEstComponent, children: [{ path: "integra", component: IntegraComponent, outlet: "sidenav-content-outlet" }] }
+  { path: "config-est", component: ConfigEstComponent, children: [{ path: "integra", component: IntegraComponent, outlet: "sidenav-content-outlet" }] },
+  { path: "ana-profe", component: AnaProfeComponent, children: [{ path: "estudantes", component: EstudantesProfeComponent, outlet: "sidenav-content-outlet" }] }
 
 ]
 

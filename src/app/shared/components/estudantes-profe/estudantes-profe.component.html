@@ -18,12 +18,12 @@
     </mat-form-field>
 
     <span class="title-buttons-spacer"></span>
-    <!-- <div id="entity-buttons">
-      <a id="excluir-button" mat-stroked-button basic color="primary" (click)=toggleBack() *ngIf="isShow"><mat-icon>arrow_left</mat-icon>Voltar</a>
-      <a id="excluir-button" mat-stroked-button basic (click)=toggleDisplay()>Cadastrar</a>
-      <a id="excluir-button" mat-stroked-button [disabled]="anySelected" href="/login">Editar</a>
-      <a id="excluir-button" mat-stroked-button [disabled]="anySelected" href="/login">Excluir</a>
-    </div> -->
+    <div id="entity-buttons">
+      <!-- <a id="excluir-button" mat-stroked-button basic color="primary" (click)=toggleBack() *ngIf="isShow"><mat-icon>arrow_left</mat-icon>Voltar</a> -->
+      <!-- <a id="excluir-button" mat-stroked-button basic (click)=toggleDisplay()>Cadastrar</a>
+      <a id="excluir-button" mat-stroked-button [disabled]="anySelected" href="/login">Editar</a> -->
+      <a id="excluir-button" mat-stroked-button [disabled]="anySelected" href="/login">Analisar</a>
+    </div>
   </mat-toolbar>
 
   <div class="table-container" *ngIf="!isShow">
@@ -43,29 +43,29 @@
         </td>
       </ng-container>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="ícon">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 1vh"> Ferramenta </th>
-        <td mat-cell *matCellDef="let element" style="width: 1%"> <mat-icon>add_to_drive</mat-icon> </td>
-      </ng-container>
-
       <!-- Position Column -->
-      <ng-container matColumnDef="tool_nome">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
-        <td mat-cell *matCellDef="let element"> Google Drive </td>
+      <ng-container matColumnDef="estudante_nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.estudante_nome}} </td>
       </ng-container>
 
       <!-- Name Column -->
-      <ng-container matColumnDef="tool_status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-        <td mat-cell *matCellDef="let element"> Não integrado (clique para integrar) </td>
+      <ng-container matColumnDef="estudante_email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> E-mail </th>
+        <td mat-cell *matCellDef="let element"> {{element.estudante_email}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="estudante_obs">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> OBS </th>
+        <td mat-cell *matCellDef="let element"> {{element.estudante_obs}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr> -->
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <!-- <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
 
   <div class="form-container" *ngIf="isShow">

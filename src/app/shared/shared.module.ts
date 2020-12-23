@@ -13,10 +13,12 @@ import { EquipesComponent } from './components/equipes/equipes.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { ConfigEstComponent } from './components/config-est/config-est.component';
 import { IntegraComponent } from './components/integra/integra.component';
+import { AnaProfeComponent } from './components/ana-profe/ana-profe.component';
+import { EstudantesProfeComponent } from './components/estudantes-profe/estudantes-profe.component';
 
 @NgModule({
-  declarations: [LoginComponent, AdmComponent, SidenavComponent, InstComponent, CursosComponent, DisciplinasComponent, TurmasComponent, EquipesComponent, UsuariosComponent, ConfigEstComponent, IntegraComponent],
+  declarations: [LoginComponent, AdmComponent, SidenavComponent, InstComponent, CursosComponent, DisciplinasComponent, TurmasComponent, EquipesComponent, UsuariosComponent, ConfigEstComponent, IntegraComponent, AnaProfeComponent, EstudantesProfeComponent],
   imports: [CommonModule, MaterialModule, RouterModule],
-  exports: [LoginComponent, AdmComponent, SidenavComponent, InstComponent, CursosComponent, DisciplinasComponent], // 👈 added
+  exports: [LoginComponent, AdmComponent, SidenavComponent, InstComponent, CursosComponent, DisciplinasComponent, AnaProfeComponent, EstudantesProfeComponent], // 👈 added
 })
 export class SharedModule { }

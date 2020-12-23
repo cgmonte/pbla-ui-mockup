@@ -15,6 +15,8 @@
 @import "./custom-component-themes.scss";
 @import "./app/shared/components/adm/adm.component.scss-theme.scss";
 @import "./app/shared/components/config-est/config-est.component.scss-theme.scss";
+@import "./app/shared/components/ana-profe/ana-profe.components.scss-theme.scss";
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
@@ -45,3 +47,7 @@ body::-webkit-scrollbar {
     display: none;
     // width: 0px;
   }
+
+.mat-toolbar {
+    background-color: rgb(251, 251, 251);
+}

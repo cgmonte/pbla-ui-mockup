@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./adm.component.scss']
 })
 export class AdmComponent implements OnInit {
-  title = 'PBL Analytics - Configuração';
+  title = 'Administração';
   themeColor: 'primary' | 'accent' | 'warn' = 'primary';
   
   constructor() { }
