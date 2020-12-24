@@ -22,7 +22,9 @@
       <!-- <a id="excluir-button" mat-stroked-button basic color="primary" (click)=toggleBack() *ngIf="isShow"><mat-icon>arrow_left</mat-icon>Voltar</a> -->
       <!-- <a id="excluir-button" mat-stroked-button basic (click)=toggleDisplay()>Cadastrar</a>
       <a id="excluir-button" mat-stroked-button [disabled]="anySelected" href="/login">Editar</a> -->
-      <a id="excluir-button" mat-stroked-button [disabled]="anySelected" href="/login">Analisar</a>
+      <a id="excluir-button" mat-stroked-button [disabled]="anySelected"
+        [routerLink]="['/vis', { outlets: { 'sidenav-content-outlet': 'estudante' } }]">Analisar</a>
+
     </div>
   </mat-toolbar>
 

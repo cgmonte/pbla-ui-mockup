@@ -82,5 +82,5 @@ export interface EstudantesFake {
 }
 
 const ELEMENT_DATA: EstudantesFake[] = [
-  { estudante_nome: 'André Araujo', estudante_cpf: '092.721.328-90', estudante_email: 'andre@cesa.school', estudante_obs: 'Nenhuma' }
+  { estudante_nome: 'Patrícia Alencar', estudante_cpf: '092.721.328-90', estudante_email: 'psa@cesa.school', estudante_obs: 'Nenhuma' }
 ];
