@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-vis',
@@ -6,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vis.component.scss']
 })
 export class VisComponent implements OnInit {
+  @ViewChild(MatAccordion) accordion: MatAccordion;
   title = 'Visualização';
   themeColor: 'primary' | 'accent' | 'warn' = 'primary';
-  
+
   constructor() { }
 
   ngOnInit(): void {

@@ -9,7 +9,7 @@
 <body>
     <div class="parent">
         <div class="first-child">
-            <mat-toolbar class=mat-elevation-z1 >
+            <mat-toolbar class=mat-elevation-z1>
                 <span>
                     <h1 class="toolbar-title">PBL Analytics</h1>
                 </span>
@@ -22,16 +22,59 @@
         </div>
         <div class="second-child">
             <mat-sidenav-container class="sidenav-container">
-            <!-- <mat-sidenav #sidenav mode="side" opened [attr.color]="themeColor"></mat-sidenav> -->
+                <!-- <mat-sidenav #sidenav mode="side" opened [attr.color]="themeColor"></mat-sidenav> -->
                 <mat-sidenav #sidenav mode="side" opened>
-                    <mat-selection-list [multiple]="false">
-                        <mat-list-option [routerLink]="['/vis', { outlets: { 'sidenav-content-outlet': 'estudante' } }]">Documentos</mat-list-option>
-                        <!-- <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'cursos' } }]">Cursos</mat-list-option>
-                        <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'disciplinas' } }]">Disciplinas</mat-list-option>
+                    <mat-accordion displayMode="flat" class="example-headers-align" multi>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Documentos
+                                </mat-panel-title>
+                                <!-- <mat-panel-description>
+                                Type your name and age
+                                <mat-icon>account_circle</mat-icon>
+                              </mat-panel-description> -->
+                            </mat-expansion-panel-header>
+                            <mat-selection-list [multiple]="false">
+                                <mat-list-option
+                                    [routerLink]="['/vis', { outlets: { 'sidenav-content-outlet': 'estudante' } }]">
+                                    Lista de documentos
+                                </mat-list-option>
+                                <mat-list-option
+                                    [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'cursos' } }]">
+                                    Interações por documento</mat-list-option>
+                                <!-- <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'disciplinas' } }]">Disciplinas</mat-list-option>
                         <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'turmas' } }]">Turmas</mat-list-option>
                         <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'equipes' } }]">Equipes</mat-list-option>
                         <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'usuarios' } }]">Usuários</mat-list-option> -->
-                    </mat-selection-list>
+                            </mat-selection-list>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Documentos
+                                </mat-panel-title>
+                                <!-- <mat-panel-description>
+                                Type your name and age
+                                <mat-icon>account_circle</mat-icon>
+                              </mat-panel-description> -->
+                            </mat-expansion-panel-header>
+                            <mat-selection-list [multiple]="false">
+                                <mat-list-option
+                                    [routerLink]="['/vis', { outlets: { 'sidenav-content-outlet': 'estudante' } }]">
+                                    Lista de documentos
+                                </mat-list-option>
+                                <mat-list-option
+                                    [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'cursos' } }]">
+                                    Interações por documento</mat-list-option>
+                                <!-- <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'disciplinas' } }]">Disciplinas</mat-list-option>
+                        <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'turmas' } }]">Turmas</mat-list-option>
+                        <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'equipes' } }]">Equipes</mat-list-option>
+                        <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'usuarios' } }]">Usuários</mat-list-option> -->
+                            </mat-selection-list>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+
                 </mat-sidenav>
                 <mat-sidenav-content>
                     <div>
