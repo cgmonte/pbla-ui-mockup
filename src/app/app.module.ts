@@ -17,6 +17,8 @@ import { ConfigEstComponent } from './shared/components/config-est/config-est.co
 import { IntegraComponent } from './shared/components/integra/integra.component';
 import { AnaProfeComponent } from './shared/components/ana-profe/ana-profe.component';
 import { EstudantesProfeComponent } from './shared/components/estudantes-profe/estudantes-profe.component';
+import { VisComponent } from './shared/components/vis/vis.component';
+import { VisEstudanteComponent } from './shared/components/vis-estudante/vis-estudante.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
   { path: "adm", component: AdmComponent, children: [{ path: "equipes", component: EquipesComponent, outlet: "sidenav-content-outlet" }] },
   { path: "adm", component: AdmComponent, children: [{ path: "usuarios", component: UsuariosComponent, outlet: "sidenav-content-outlet" }] },
   { path: "config-est", component: ConfigEstComponent, children: [{ path: "integra", component: IntegraComponent, outlet: "sidenav-content-outlet" }] },
-  { path: "ana-profe", component: AnaProfeComponent, children: [{ path: "estudantes", component: EstudantesProfeComponent, outlet: "sidenav-content-outlet" }] }
+  { path: "ana-profe", component: AnaProfeComponent, children: [{ path: "estudantes", component: EstudantesProfeComponent, outlet: "sidenav-content-outlet" }] },
+  { path: "vis", component: VisComponent, children: [{ path: "estudante", component: VisEstudanteComponent, outlet: "sidenav-content-outlet" }] }
 
 ]
 
