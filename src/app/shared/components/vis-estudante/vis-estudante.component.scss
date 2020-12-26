@@ -1,0 +1,88 @@
+.mat-toolbar {
+    // position: sticky;
+    min-height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#section-title {
+    color: #00b0ff;
+    padding: 0px;
+    margin: 0px;
+    // flex-grow: 1;
+    flex-shrink: 10;
+}
+
+#form-field-filtro {
+    font-size: 10px;
+    // flex-grow: 1;
+    flex-shrink: 30;
+    margin-left: 20px;
+    margin-top: 2.5vh;
+    max-width: 20vh;
+}
+
+#form-field{
+   margin-top: 1.5em; 
+}
+
+.title-buttons-spacer {
+    flex-grow: 100;
+}
+
+#entity-buttons {
+    color: #01579b;
+    // flex-grow: 1;
+    margin-top: 1%;
+    flex-shrink: 30;
+
+}
+
+#excluir-button {
+    margin-left: 10px;
+}
+
+#cadastrar-button {
+    margin-left: 10px;
+}
+
+
+.table-container {
+    // display: none;
+    height: 64vh;
+    overflow: auto;
+    margin-top: 5%;
+    margin-left: 1%;
+    margin-right: 1.6%;
+    display: flex;
+    flex-flow: wrap;
+    align-content: space-between;
+    justify-content: flex-end;
+}
+
+.form-container{
+    margin-top: 5%;
+    margin-left: 2%;
+    margin-right: 1.6%; 
+}
+
+
+table {
+    // margin-right: 9%;
+    width: 100%;
+    background-color: rgb(251, 251, 251);
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.mat-paginator {
+    background-color: rgb(251, 251, 251);
+}
+
+td,
+th {
+    width: 25%;
+}
