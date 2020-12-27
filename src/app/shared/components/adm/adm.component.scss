@@ -1,40 +1,34 @@
+// Define a cor do texto do botão "sair"
 .mat-flat-button {
     color: white;
 }
 
+// Define a cor do título do site, PBL Analytics, na barra superior, canto esquerdo.
 .toolbar-title {
     color: #01579b;
 }
 
-.example-spacer {
+// Espaçador entre o título do site e botões à direita
+.spacer {
     flex: 1 1 auto;
 }
 
+// Espaçador entre-botões
 #side-by-side-button {
     margin-left: 10px;
 }
 
+// formatação da indicação de versão alpha
 #alpha {
-    color: orange;
+    color: #01589b49;
     margin-left: 10px;
     margin-top: 0.50vh;
 }
 
-.parent {
-    // position: fixed;
-    width: 100%;
-    // margin-bottom: 100px;
-    // padding-bottom: 10vh;
-
-    // height: 100vh;
-}
-.body::-webkit-scrollbar {
-    display: none;
-}
-
-.body {
-    overflow-y: hidden;
-}
+// Não apagar. Ainda investigando o comportamento da scrollbar, quando e como esconde-la etc.
+// .body {
+//     overflow-y: hidden;
+// }
 
 .fist-child {
     max-height: fit-content;
@@ -42,30 +36,26 @@
 
 .second-child {
     height: 85vh;
-    // position: fixed;
-    // min-height: calc(100vh - 64px);
     margin-top: 2%;
     margin-left: 3%;
     margin-right: 3%;
-    // margin-bottom: 100px;
-    // padding-bottom: 100px;
-    // height: calc(100vh - 64px);
 
     .sidenav-container {
+        // o container do sidenav inteiro, que utilizamos para mostrar o conteúdo principal do site, precisa ocupar 100% do espaço disponível na tela.
         height: 100%;
 
         .mat-sidenav {
-            padding: 4px;
-            min-width: 13%;
+            padding: 2vh;
+            // Por enquanto é desnecessário definir uma largura
+            // width: 20vh;
             .mat-list-item {
                 color: #01579b;
             }
         }
 
         .mat-sidenav-content {
-            // position: sticky;
-            // height: calc(100vh - 5%);
-            background-color: rgb(251, 251, 251);
+            // Podemos definir uma cor de fundo específica, mas o tem já está sendo aplicado
+            // background-color: rgb(251, 251, 251);
             padding-left: 3vh;
             padding-right: 3vh;
             padding-top: 4vh;

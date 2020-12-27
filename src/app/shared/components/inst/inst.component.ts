@@ -10,12 +10,17 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./inst.component.scss']
 })
 export class InstComponent implements OnInit {
+  // tittle é usado no template
   title = 'Insituições';
-  themeColor: 'primary' | 'accent' | 'warn' = 'primary';
-  displayedColumns = ['select', 'inst_nome', 'inst_cnpj', 'inst_obs'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
   
+  // themeColor: 'primary' | 'accent' | 'warn' = 'primary';
+
+  // Criação de objetos relacionados aos dados e tabelas
+  displayedColumns = ['select', 'inst_nome', 'inst_cnpj', 'inst_obs'];
+  dataSource = new MatTableDataSource<FakeData>(ELEMENT_DATA);
+  selection = new SelectionModel<FakeData>(true, []);
+  
+  // isShow é inicializado falso, mas vai ser alterado pelos toggles
   isShow = false;
   toggleDisplay() {
     this.isShow = true;
@@ -23,7 +28,7 @@ export class InstComponent implements OnInit {
   toggleBack() {
     this.isShow = false;
   }
-
+  // função para checar se alguma checkbox está selecionada. Usada para mostrar ou não botões como o de editar e excluir.
   anySelected = true;
   changeCheck(event) {
     if (this.selection.selected.length > 0) {
@@ -34,6 +39,7 @@ export class InstComponent implements OnInit {
     }
   }
 
+  // Paginador e ordenador da tabela
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   ngAfterViewInit() {
@@ -41,6 +47,7 @@ export class InstComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
+  // Filtro
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -61,7 +68,7 @@ export class InstComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PeriodicElement): string {
+  checkboxLabel(row?: FakeData): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
@@ -74,13 +81,14 @@ export class InstComponent implements OnInit {
   }
 }
 
-export interface PeriodicElement {
+// Campos da tabela
+export interface FakeData {
   inst_nome: string;
   inst_cnpj: string;
   inst_obs: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { inst_nome: 'Cesar School', inst_cnpj: '01.203.327/0001-23', inst_obs: 'Nenhuma' },
-  { inst_nome: 'Instituto Federal de Pernambuco', inst_cnpj: '02.403.237/0005-28', inst_obs: 'Nenhuma' }
+// Dados fake par preencher a tabela do mockup
+const ELEMENT_DATA: FakeData[] = [
+  { inst_nome: 'Cesar School', inst_cnpj: '01.203.327/0001-23', inst_obs: 'Nenhuma' }
 ];

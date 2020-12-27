@@ -1,3 +1,4 @@
+<!-- Esse é o template do componente Intituições, que é carregado no sidenav-content-outlet -->
 <!DOCTYPE html>
 <html>
 
@@ -7,80 +8,176 @@
 </head>
 
 <body>
+  <!-- Cada componente que é carregado no sidenav-content-outlet tem um elemento toolbar, onde carregamos recursos fixos na página, como título, filtro e botões -->
   <mat-toolbar>
-    <!-- <div id="sub-toolbar-container"> -->
+
+    <!-- Título -->
     <span class="title-span">
       <h1 class="mat-display-3" id="section-title">{{title}}</h1>
     </span>
 
-    <mat-form-field appearance="fill" id="form-field-filtro">
+    <!-- Filtro -->
+    <mat-form-field appearance="outline" id="form-field-filtro" *ngIf="!isShow">
       <mat-label>filtrar</mat-label>
       <input matInput (keyup)="applyFilter($event)">
     </mat-form-field>
 
+    <!-- Espaçador -->
     <span class="title-buttons-spacer"></span>
+
+    <!-- Div para agrupar botões -->
     <div id="entity-buttons">
-      <a id="excluir-button" mat-stroked-button basic href="/login">Cadastrar</a>
-      <a id="excluir-button" mat-stroked-button [disabled]="anySelected" href="/login">Excluir</a>
+      <!-- Botão de voltar, que aparece quando estamos no form de cadastro. A função toggleBack() é definida em inst.components.ts e executada em caso de click, mudando o valor de "isShow" -->
+      <!-- isShow é um boolean para o método ngIf https://angular.io/api/common/NgIf que é usado para incluir ou não templates e elementos  -->
+      <a id="excluir-button" mat-stroked-button basic color="primary" (click)=toggleBack() *ngIf="isShow">
+        <mat-icon>arrow_left</mat-icon>Voltar
+      </a>
+      <!-- O Botão de cadastrar é o contrário do botão de voltar. Usa os mesmos métodos, mas o valor de ngIF é o contrário. "Cadastrar" e "Voltar" se substituem, quando um aparece, o outro some. -->
+      <a id="excluir-button" mat-stroked-button basic (click)=toggleDisplay() *ngIf="!isShow">Cadastrar</a>
+
+      <!-- Os botões abaixo são placeholders (por enquanto sem funcionalidade) e permitirão edição e exclusão de múltiplos itens ao mesmo tempo  
+      São ativados se anySelected for true-->
+      <a id="excluir-button" mat-stroked-button [disabled]="anySelected">Editar</a>
+      <a id="excluir-button" mat-stroked-button [disabled]="anySelected">Excluir</a>
     </div>
-    <!-- </div> -->
   </mat-toolbar>
 
-  <div class="table-container">
+  <!-- Aqui começamos a definir a tabela. Ela, assim como o botão "Cadastrar", também só é carregada se isShow for falso -->
+  <div class="table-container" *ngIf="!isShow">
+    <!-- A tabela usa os components do Angular Material, que permitem vários recursos. Aqui carregamos os dados (ver inst.component.ts) e adicionamos marSort para ordenar-->
     <table mat-table [dataSource]="dataSource" matSort>
-
+      <!-- Essa é a coluna com os checkboxes da tabela, que permitem a seleção de linhas. Essa definição de coluna matColumnDef permite que façamos referência a ela no inst.component.ts -->
       <ng-container matColumnDef="select">
+        <!-- Definição do cabeçalho da coluna de checkboxes-->
         <th mat-header-cell *matHeaderCellDef style="width: 10%">
-          <mat-checkbox (change)="$event ? masterToggle() : null"
-                        (change)="changeCheck($event)"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()"
-                        [aria-label]="checkboxLabel()">
+          <!-- No evento de uma mudança na checkbox, a função masterToggle() (ver inst.component.ts) é executada. Ela seleciona todas as celulas. Caso todas já estejam selecionadas, ela limpa tudo.  -->
+          <mat-checkbox (change)="$event ? masterToggle() : null" (change)="changeCheck($event)"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
           </mat-checkbox>
         </th>
+        <!-- Definição das celulas de cada linha com checkboxes -->
         <td mat-cell *matCellDef="let row" style="width: 10%">
-          <mat-checkbox (click)="$event.stopPropagation()"
-                        (change)="$event ? selection.toggle(row) : null"
-                        (change)="changeCheck($event)"
-                        [checked]="selection.isSelected(row)"
-                        [aria-label]="checkboxLabel(row)">
+          <!-- selection é uma instância de SelectionModel, https://github.com/angular/components/blob/master/src/cdk/collections/collections.md -->
+          <!-- Vários métodos são usados aqui para lidar com eventos de seleção e desseleção -->
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+            (change)="changeCheck($event)" [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
           </mat-checkbox>
         </td>
       </ng-container>
 
-      <!-- Position Column -->
-
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      <!-- Coluna disciplina -->
+      <ng-container matColumnDef="disc_nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Disciplina </th>
+        <td mat-cell *matCellDef="let element"> {{element.disc_nome}} </td>
       </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <!-- Coluna turma -->
+      <ng-container matColumnDef="turma_semestre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Turma </th>
+        <td mat-cell *matCellDef="let element"> {{element.turma_semestre}} </td>
       </ng-container>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
-        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      <!-- Coluna nome do curso -->
+      <ng-container matColumnDef="curso_nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome do curso </th>
+        <td mat-cell *matCellDef="let element"> {{element.curso_nome}} </td>
       </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      <!-- Coluna quantidade de estudantes -->
+      <ng-container matColumnDef="turma_qte_estudantes">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estudantes</th>
+        <td mat-cell *matCellDef="let element"> {{element.turma_qte_estudantes}} </td>
       </ng-container>
 
+      <!-- Coluna obs -->
+      <ng-container matColumnDef="turma_obs">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> OBS </th>
+        <td mat-cell *matCellDef="let element"> {{element.turma_obs}} </td>
+      </ng-container>
+
+      <!-- Definição da linha de cabeçalho configurado como "sticky", sempre visível -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+
+      <!-- Usar a seguinte linha para a seleção de checkbox ocorrer com clique em qualquer ponto da linhas:  -->
       <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr> -->
+
+      <!-- Linhas da tabela -->
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
   </div>
 
-  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  <div class="paginator-container" *ngIf="!isShow">
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+
+  <!-- Essa é a div do formulário para cadastrar nova instituição. 
+  Só é exibida quando o botão cadastrar é acionado, mudando isShow pra verdadeiro, 
+  o que também esconde a tabela de navegação. -->
+  <div class="form-container" *ngIf="isShow">
+    <h2>Cadastrar nova turma</h2>
+    <mat-form-field hintLabel="Máximo de 4 números" appearance="fill" id='form-field'>
+      <mat-label>Ano da disciplina</mat-label>
+      <input matInput #input1 maxlength="4" placeholder="Ex. Nougat">
+      <mat-hint align="end">{{input1.value?.length || 0}}/4</mat-hint>
+    </mat-form-field>
+    <br><br>
+
+    <mat-form-field appearance="fill" id='form-field'>
+      <mat-label>Selecionar semestre</mat-label>
+      <select matNativeControl required>
+        <option value="inst">1</option>
+        <option value="inst">2</option>
+      </select>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill" id='form-field'>
+      <mat-label>Selecionar nível</mat-label>
+      <select matNativeControl required>
+        <option value="inst">Mestrado Profissional</option>
+        <option value="inst">Graduação</option>
+        <option value="inst">Doutorado</option>
+      </select>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill" id='form-field'>
+      <mat-label>Selecionar curso</mat-label>
+      <select matNativeControl required>
+        <option value="inst">Engenharia de Software</option>
+        <option value="inst">Design</option>
+        <option value="inst">Design</option>
+        <option value="inst">Ciência da computação</option>
+      </select>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill" id='form-field'>
+      <mat-label>Selecionar disciplina</mat-label>
+      <select matNativeControl required>
+        <option value="inst">Processos de software</option>
+        <option value="inst">Requisitos e interfaces</option>
+        <option value="inst">Gestão de projetos</option>
+        <option value="inst">Verificação e validação</option>
+        <option value="inst">Arquitetura de software</option>
+        <option value="inst">Tópicos de construção SW</option>
+        <option value="inst">Interoperabilidade</option>
+        <option value="inst">Metodologia científica</option>
+      </select>
+    </mat-form-field>
+    <br>
+    <mat-form-field hintLabel="Outras informações" appearance="fill" id='form-field' style="width: 40%">
+      <mat-label>Observações</mat-label>
+      <textarea matInput #input3 maxlength="200" placeholder="Ex. It makes me feel..."
+        [matTextareaAutosize]="true"></textarea>
+      <mat-hint align="end">{{input3.value?.length || 0}}/200</mat-hint>
+    </mat-form-field>
+    <br>
+    <!-- Botão Salvar. Deve estar desativado até que alguma informação nova seja inserida no form. Falta implementar. -->
+    <a mat-flat-button color="accent" id="form-field" (click)=toggleBack()>Salvar</a>
+  </div>
 
 </body>
 

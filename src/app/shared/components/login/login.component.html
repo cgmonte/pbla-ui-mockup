@@ -9,9 +9,12 @@
 <body class="fundo">
     <mat-card class="login-container">
         <br>
+        <!-- O elemento abaixo cria o título do "card" de login e configura um link provisório para a tela inicial do Administrador, que por enquanto fica a tela "Instituições". -->
+        <!-- Esse link deixará de existir quando a funcionalidade real de login for implementada -->
         <mat-card-title><a href="/adm/(sidenav-content-outlet:inst)" class="link-titulo">PBL Analytics</a></mat-card-title>
         <br>
         <mat-card-content>
+            <!-- No conteúdo do cartão, criamos os campos de usuário e senha -->
             <mat-form-field appearance="fill">
                 <mat-label>Usuário</mat-label>
                 <input matInput type='text'>

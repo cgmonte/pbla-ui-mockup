@@ -9,39 +9,3 @@ $pbla-ui-theme: mat-light-theme(
     $pbla-ui-accent,
     $pbla-ui-warn
 );
-
-
-// 👇 3. Define a custom heading typography config
-// $heading-font-family: "'Work Sans', sans-serif";
-// $typography: mat-typography-config(
-//     $display-4:
-//         mat-typography-level(
-//             112px,
-//             $font-family: $heading-font-family
-//         ),
-//     $display-3:
-//         mat-typography-level(
-//             56px,
-//             $font-family: $heading-font-family
-//         ),
-//     $display-2:
-//         mat-typography-level(
-//             45px,
-//             $font-family: $heading-font-family
-//         ),
-//     $display-1:
-//         mat-typography-level(
-//             34px,
-//             $font-family: $heading-font-family
-//         ),
-//     $headline:
-//         mat-typography-level(
-//             24px,
-//             $font-family: $heading-font-family
-//         ),
-//     $title:
-//         mat-typography-level(
-//             20px,
-//             $font-family: $heading-font-family
-//         ),
-// );

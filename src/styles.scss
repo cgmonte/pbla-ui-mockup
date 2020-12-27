@@ -44,9 +44,9 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+// Esconder scroll bar do site inteiro
 body::-webkit-scrollbar {
     display: none;
-    // width: 0px;
   }
 
 .mat-toolbar {
