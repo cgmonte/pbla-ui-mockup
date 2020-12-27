@@ -9,14 +9,14 @@
 <body>
     <div class="parent">
         <div class="first-child">
-            <mat-toolbar class=mat-elevation-z1 >
+            <mat-toolbar class=mat-elevation-z1>
                 <span>
                     <h1 class="toolbar-title">PBL Analytics</h1>
                 </span>
-                <span class="example-spacer"></span>
+                <small class=".mat-small" id="alpha" [attr.color]="themeColor"><i>alpha</i></small>
+                <span class="spacer"></span>
                 <button mat-button color="accent" id="side-by-side-button">Analytics</button>
                 <button mat-button color="accent" id="side-by-side-button">Configuração</button>
-                <button mat-button color="accent" id="side-by-side-button">Perfil</button>
                 <a mat-flat-button color="primary" href="/login" id="side-by-side-button">Sair</a>
             </mat-toolbar>
         </div>
