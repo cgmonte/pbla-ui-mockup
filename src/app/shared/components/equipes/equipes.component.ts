@@ -3,6 +3,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-equipes',
@@ -75,9 +78,54 @@ export class EquipesComponent implements OnInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.equipe_numero + 1}`;
   }
+  myControl = new FormControl();
+  options: string[] = [
+    'Graduação em Ciência da computação - CESAR School',
+    'Graduação em Design - CESAR School',
+    'Mestrado profissional em Design - CESAR School',
+    'Mestrado profissional em Engenharia de software - CESAR School'
+  ];
+  filteredOptions: Observable<string[]>;
+
+  disciplinasControl = new FormControl();
+  options_disciplinas: string[] = [
+    'Processos de software 2020.2',
+    'Requisitos e interfaces 2020.2',
+    'Gestão de projetos 2020.2',
+    'Verificação e validação 2020.2',
+    'Arquitetura de software 2020.2',
+    'Tópicos de construção SW 2020.2',
+    'Interoperabilidade 2020.2',
+    'Metodologia científica 2020.2'
+  ];
+  filteredDisciplinasOptions: Observable<string[]>;
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+
+    this.filteredDisciplinasOptions = this.disciplinasControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(dsic_value => this._disc_filter(dsic_value))
+      );
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  private _disc_filter(dsic_value: string): string[] {
+    const disciplinafilterValue = dsic_value.toLowerCase();
+
+    return this.options_disciplinas.filter(options_disciplinas => options_disciplinas.toLowerCase().includes(disciplinafilterValue));
   }
 }
 

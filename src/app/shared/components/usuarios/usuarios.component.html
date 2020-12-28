@@ -17,7 +17,7 @@
     </span>
 
     <!-- Filtro -->
-    <mat-form-field appearance="outline" id="form-field-filtro" *ngIf="!isShow">
+    <mat-form-field appearance="outline" id="form-field-filtro" *ngIf="!formIsShow">
       <mat-label>filtrar</mat-label>
       <input matInput (keyup)="applyFilter($event)">
     </mat-form-field>
@@ -27,13 +27,13 @@
 
     <!-- Div para agrupar botões -->
     <div id="entity-buttons">
-      <!-- Botão de voltar, que aparece quando estamos no form de cadastro. A função toggleBack() é definida em inst.components.ts e executada em caso de click, mudando o valor de "isShow" -->
-      <!-- isShow é um boolean para o método ngIf https://angular.io/api/common/NgIf que é usado para incluir ou não templates e elementos  -->
-      <a id="excluir-button" mat-stroked-button basic color="primary" (click)=toggleBack() *ngIf="isShow">
+      <!-- Botão de voltar, que aparece quando estamos no form de cadastro. A função toggleBack() é definida em inst.components.ts e executada em caso de click, mudando o valor de "formIsShow" -->
+      <!-- formIsShow é um boolean para o método ngIf https://angular.io/api/common/NgIf que é usado para incluir ou não templates e elementos  -->
+      <a id="excluir-button" mat-stroked-button basic color="primary" (click)=toggleBack() *ngIf="formIsShow">
         <mat-icon>arrow_left</mat-icon>Voltar
       </a>
       <!-- O Botão de cadastrar é o contrário do botão de voltar. Usa os mesmos métodos, mas o valor de ngIF é o contrário. "Cadastrar" e "Voltar" se substituem, quando um aparece, o outro some. -->
-      <a id="excluir-button" mat-stroked-button basic (click)=toggleDisplay() *ngIf="!isShow">Cadastrar</a>
+      <a id="excluir-button" mat-stroked-button basic (click)=toggleDisplay() *ngIf="!formIsShow">Cadastrar</a>
 
       <!-- Os botões abaixo são placeholders (por enquanto sem funcionalidade) e permitirão edição e exclusão de múltiplos itens ao mesmo tempo  
       São ativados se anySelected for true-->
@@ -42,8 +42,8 @@
     </div>
   </mat-toolbar>
 
-  <!-- Aqui começamos a definir a tabeka. Ela, assim como o botão "Cadastrar", também só é carregada se isShow for falso -->
-  <div class="table-container" *ngIf="!isShow">
+  <!-- Aqui começamos a definir a tabeka. Ela, assim como o botão "Cadastrar", também só é carregada se formIsShow for falso -->
+  <div class="table-container" *ngIf="!formIsShow">
     <!-- A tabela usa os components do Angular Material, que permitem vários recursos. Aqui carregamos os dados (ver inst.component.ts) e adicionamos marSort para ordenar-->
     <table mat-table [dataSource]="dataSource" matSort>
       <!-- Essa é a coluna com os checkboxes da tabela, que permitem a seleção de linhas. Essa definição de coluna matColumnDef permite que façamos referência a ela no inst.component.ts -->
@@ -115,44 +115,64 @@
   </div>
 
   <!-- Paginador da tabela -->
-  <div class="paginator-container" *ngIf="!isShow">
+  <div class="paginator-container" *ngIf="!formIsShow">
     <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
 
   <!-- Essa é a div do formulário para cadastrar nova instituição. 
-  Só é exibida quando o botão cadastrar é acionado, mudando isShow pra verdadeiro, 
+  Só é exibida quando o botão cadastrar é acionado, mudando formIsShow pra verdadeiro, 
   o que também esconde a tabela de navegação. -->
-  <div class="form-container" *ngIf="isShow">
+  <div class="form-container" *ngIf="formIsShow">
     <h2>Cadastrar novo usuário</h2>
     <mat-form-field hintLabel="Max 50 characters" appearance="fill" id='form-field' style="width: 50%">
       <mat-label>Nome do usuário</mat-label>
-      <input matInput #input1 maxlength="80" placeholder="Ex. Nougat">
+      <input matInput #input1 maxlength="80">
       <mat-hint align="end">{{input1.value?.length || 0}}/50</mat-hint>
     </mat-form-field>
     <br>
 
-    <mat-form-field appearance="fill" id='form-field'>
-      <mat-label>Selecionar tipo de usuário</mat-label>
-      <select matNativeControl required>
-        <option>Administrador</option>
-        <option>Coordenador</option>
-        <option>Professor</option>
-        <option>Estudante</option>
-      </select>
+    <mat-form-field appearance="fill" hintLabel="Um usuário pode ter vários papéis, exceto se for um estudante."
+      id='form-field' style="width: 40%">
+      <mat-label>Selecione o tipo de usuário quer deseja criar</mat-label>
+      <mat-select multiple [(value)]="selected_user_roles" (selectionChange)="limitSelection()">
+        <mat-option value="adm">Administrador</mat-option>
+        <mat-option value="coor">Coordenador</mat-option>
+        <mat-option value="profe">Professor</mat-option>
+        <mat-option value="est">Estudante</mat-option>
+      </mat-select>
     </mat-form-field>
     <br>
 
+    <mat-form-field hintLabel="Curso no qual o estudante está matriculado" appearance="fill" id='form-field'
+    style="width: 60%" *ngIf="userFieldIsShow">
+    <mat-label>Selecionar curso</mat-label>
+      <input type="text" aria-label="Number" matInput [formControl]="myControl"
+        [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <br *ngIf="userFieldIsShow">
+
     <mat-form-field hintLabel="Apenas números" appearance="fill" id='form-field' style="width: 25%">
-      <mat-label>CNPJ</mat-label>
-      <input matInput #input2 maxlength="80" placeholder="Ex. Nougat">
+      <mat-label>CPF</mat-label>
+      <input matInput #input2 maxlength="80">
+      <mat-hint align="end">{{input2.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field hintLabel="Digite endereço de e-mail" appearance="fill" id='form-field' style="width: 25%">
+      <mat-label>E-Mail</mat-label>
+      <input matInput #input2 maxlength="80">
       <mat-hint align="end">{{input2.value?.length || 0}}/50</mat-hint>
     </mat-form-field>
     <br>
 
     <mat-form-field hintLabel="Outras informações" appearance="fill" id='form-field' style="width: 40%">
       <mat-label>Observações</mat-label>
-      <textarea matInput #input3 maxlength="200" placeholder="Ex. It makes me feel..."
-        [matTextareaAutosize]="true"></textarea>
+      <textarea matInput #input3 maxlength="200" [matTextareaAutosize]="true"></textarea>
       <mat-hint align="end">{{input3.value?.length || 0}}/200</mat-hint>
     </mat-form-field>
     <br>

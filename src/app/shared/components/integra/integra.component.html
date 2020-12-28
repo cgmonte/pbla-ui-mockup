@@ -72,21 +72,21 @@
     <h2>Cadastrar nova instituição</h2>
     <mat-form-field hintLabel="Max 50 characters" appearance="fill" id='form-field' style="width: 50%">
       <mat-label>Nome da instituição</mat-label>
-      <input matInput #input1 maxlength="80" placeholder="Ex. Nougat">
+      <input matInput #input1 maxlength="80">
       <mat-hint align="end">{{input1.value?.length || 0}}/50</mat-hint>
     </mat-form-field>
     <br>
 
     <mat-form-field hintLabel="Apenas números" appearance="fill" id='form-field' style="width: 25%">
       <mat-label>CNPJ</mat-label>
-      <input matInput #input2 maxlength="80" placeholder="Ex. Nougat">
+      <input matInput #input2 maxlength="80">
       <mat-hint align="end">{{input2.value?.length || 0}}/50</mat-hint>
     </mat-form-field>
     <br>
 
     <mat-form-field hintLabel="Outras informações" appearance="fill" id='form-field' style="width: 40%">
       <mat-label>Observações</mat-label>
-      <textarea matInput #input3 maxlength="200" placeholder="Ex. It makes me feel..."
+      <textarea matInput #input3 maxlength="200"
         [matTextareaAutosize]="true"></textarea>
       <mat-hint align="end">{{input3.value?.length || 0}}/200</mat-hint>
     </mat-form-field>

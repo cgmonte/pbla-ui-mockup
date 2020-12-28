@@ -117,59 +117,42 @@
   o que também esconde a tabela de navegação. -->
   <div class="form-container" *ngIf="isShow">
     <h2>Cadastrar nova equipe</h2>
-    <mat-form-field appearance="fill" id='form-field'>
-      <mat-label>Número da equipe</mat-label>
-      <input matInput #input1 maxlength="2">
-      <mat-hint align="end">{{input1.value?.length || 0}}/2</mat-hint>
+
+    <mat-form-field hintLabel="Curso no qual a equipe está matriculada"
+      appearance="fill" id='form-field' style="width: 50%">
+      <mat-label>Selecionar curso</mat-label>
+      <input type="text" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field hintLabel="Turma da qual a equipe faz parte" appearance="fill" id='form-field'
+      style="width: 50%">
+      <mat-label>Selecionar turma</mat-label>
+      <input type="text" aria-label="Teste" matInput [formControl]="disciplinasControl" [matAutocomplete]="auto2">
+      <mat-autocomplete #auto2="matAutocomplete">
+        <mat-option *ngFor="let options_disciplinas of filteredDisciplinasOptions | async"
+          [dsic_value]="options_disciplinas">
+          {{options_disciplinas}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
     <br>
 
     <mat-form-field hintLabel="Max 50 characters" appearance="fill" id='form-field' style="width: 50%">
       <mat-label>Nome da equipe</mat-label>
-      <input matInput #input1 maxlength="80" placeholder="Ex. Nougat">
+      <input matInput #input1 maxlength="80">
       <mat-hint align="end">{{input1.value?.length || 0}}/50</mat-hint>
     </mat-form-field>
     <br>
 
-    <mat-form-field appearance="fill" id='form-field'>
-      <mat-label>Selecionar nível</mat-label>
-      <select matNativeControl required>
-        <option value="inst">Mestrado Profissional</option>
-        <option value="inst">Graduação</option>
-        <option value="inst">Doutorado</option>
-      </select>
-    </mat-form-field>
-    <br>
-
-    <mat-form-field appearance="fill" id='form-field'>
-      <mat-label>Selecionar curso</mat-label>
-      <select matNativeControl required>
-        <option value="inst">Engenharia de Software</option>
-        <option value="inst">Design</option>
-        <option value="inst">Design</option>
-        <option value="inst">Ciência da computação</option>
-      </select>
-    </mat-form-field>
-    <br>
-
-    <mat-form-field appearance="fill" id='form-field'>
-      <mat-label>Selecionar disciplina</mat-label>
-      <select matNativeControl required>
-        <option value="inst">Processos de software</option>
-        <option value="inst">Requisitos e interfaces</option>
-        <option value="inst">Gestão de projetos</option>
-        <option value="inst">Verificação e validação</option>
-        <option value="inst">Arquitetura de software</option>
-        <option value="inst">Tópicos de construção SW</option>
-        <option value="inst">Interoperabilidade</option>
-        <option value="inst">Metodologia científica</option>
-      </select>
-    </mat-form-field>
-    <br>
     <mat-form-field hintLabel="Outras informações" appearance="fill" id='form-field' style="width: 40%">
       <mat-label>Observações</mat-label>
-      <textarea matInput #input3 maxlength="200" placeholder="Ex. It makes me feel..."
-        [matTextareaAutosize]="true"></textarea>
+      <textarea matInput #input3 maxlength="200" [matTextareaAutosize]="true"></textarea>
       <mat-hint align="end">{{input3.value?.length || 0}}/200</mat-hint>
     </mat-form-field>
     <br>

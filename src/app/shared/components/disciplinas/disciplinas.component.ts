@@ -3,6 +3,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-disciplinas',
@@ -15,7 +18,7 @@ export class DisciplinasComponent implements OnInit {
 
   // themeColor: 'primary' | 'accent' | 'warn' = 'primary';
 
-  // Criação de objetos relacionados aos dados e tabelas
+  // Criação de objetos relacionados aos dados da tabelas
   displayedColumns = ['select', 'disc_nome', 'curso_nivel', 'curso_nome', 'disc_obs'];
   dataSource = new MatTableDataSource<FakeData>(ELEMENT_DATA);
   selection = new SelectionModel<FakeData>(true, []);
@@ -74,10 +77,29 @@ export class DisciplinasComponent implements OnInit {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.disc_nome + 1}`;
-  }
+  }myControl = new FormControl();
+  options: string[] = [
+    'Graduação em Ciência da computação',
+    'Graduação em Design',
+    'Mestrado profissional em Design',
+    'Mestrado profissional em Engenharia de software'
+  ];
+  filteredOptions: Observable<string[]>;
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 }
 

@@ -115,45 +115,41 @@
     <h2>Cadastrar nova disciplina</h2>
     <mat-form-field hintLabel="Máximo de 50 caracteres" appearance="fill" id='form-field' style="width: 50%">
       <mat-label>Nome da disciplina</mat-label>
-      <input matInput #input1 maxlength="80" placeholder="Ex. Nougat">
-      <mat-hint align="end">{{input1.value?.length || 0}}/50</mat-hint>
-    </mat-form-field>
-    <br><br>
-
-    <mat-form-field hintLabel="Máximo de 50 caracteres" appearance="fill" id='form-field' style="width: 50%">
-      <mat-label>Nome da disciplina</mat-label>
-      <input matInput #input1 maxlength="80" placeholder="Ex. Nougat">
+      <input matInput #input1 maxlength="80">
       <mat-hint align="end">{{input1.value?.length || 0}}/50</mat-hint>
     </mat-form-field>
     <br>
 
-    <mat-form-field appearance="fill" id='form-field'>
+    <!-- <mat-form-field appearance="fill" id='form-field'>
       <mat-label>Selecionar Nível</mat-label>
-      <select matNativeControl required>
-        <option value="inst">Mestrado Profissional</option>
-        <option value="inst">Graduação</option>
-        <option value="inst">Doutorado</option>
-      </select>
+      <mat-select>
+        <mat-option value="inst">Mestrado Profissional</mat-option>
+        <mat-option value="inst">Graduação</mat-option>
+        <mat-option value="inst">Doutorado</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br> -->
+
+    <mat-form-field hintLabel="Curso no qual o estudante está matriculado" appearance="fill" id='form-field'
+    style="width: 60%">
+      <input type="text" placeholder="Escolha o curso" aria-label="Number" matInput [formControl]="myControl"
+        [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
     <br>
 
-    <mat-form-field appearance="fill" id='form-field'>
-      <mat-label>Selecionar curso</mat-label>
-      <select matNativeControl required>
-        <option value="inst">Engenharia de Software</option>
-        <option value="inst">Design</option>
-        <option value="inst">Design</option>
-        <option value="inst">Ciência da computação</option>
-      </select>
-    </mat-form-field>
-    <br>
     <mat-form-field hintLabel="Outras informações" appearance="fill" id='form-field' style="width: 40%">
       <mat-label>Observações</mat-label>
-      <textarea matInput #input3 maxlength="200" placeholder="Ex. It makes me feel..."
+      <textarea matInput #input3 maxlength="200"
         [matTextareaAutosize]="true"></textarea>
       <mat-hint align="end">{{input3.value?.length || 0}}/200</mat-hint>
     </mat-form-field>
     <br>
+
     <!-- Botão Salvar. Deve estar desativado até que alguma informação nova seja inserida no form. Falta implementar. -->
     <a mat-flat-button color="accent" id="form-field" (click)=toggleBack()>Salvar</a>
   </div>

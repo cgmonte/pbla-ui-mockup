@@ -3,6 +3,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-usuarios',
@@ -15,18 +18,35 @@ export class UsuariosComponent implements OnInit {
 
   // themeColor: 'primary' | 'accent' | 'warn' = 'primary';
 
-  // Criação de objetos relacionados aos dados e tabelas
+  // Seleção de tipo de usuário. Regra para proibir que estudantes tenham outro papel.
+  roles = new FormControl();
+  roleList: string[] = ['Administrador', 'Coordenador', 'Professor', 'Estudante'];
+  selected_user_roles: string[] = [];
+  userFieldIsShow = false;
+  limitSelection() {
+    if (this.selected_user_roles.includes('est') == true) {
+      this.selected_user_roles = ['est'];
+      // Mostrar campo "Curso" caso usuário seja do tipo estudante
+      this.userFieldIsShow = true;
+    }
+    else {
+      this.userFieldIsShow = false;
+    }
+  }
+
+
+  // Criação de objetos relacionados aos dados da tabelas
   displayedColumns = ['select', 'user_name', 'user_role', 'curso_nivel', 'curso_nome', 'user_mail', 'user_obs'];
   dataSource = new MatTableDataSource<FakeData>(ELEMENT_DATA);
   selection = new SelectionModel<FakeData>(true, []);
 
-  // isShow é inicializado falso, mas vai ser alterado pelos toggles
-  isShow = false;
+  // formIsShow é inicializado falso, mas vai ser alterado pelos toggles
+  formIsShow = false;
   toggleDisplay() {
-    this.isShow = true;
+    this.formIsShow = true;
   }
   toggleBack() {
-    this.isShow = false;
+    this.formIsShow = false;
   }
 
   // função para checar se alguma checkbox está selecionada. Usada para mostrar ou não botões como o de editar e excluir.
@@ -76,9 +96,29 @@ export class UsuariosComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.user_name + 1}`;
   }
 
+  myControl = new FormControl();
+  options: string[] = [
+    'Graduação em Ciência da computação',
+    'Graduação em Design',
+    'Mestrado profissional em Design',
+    'Mestrado profissional em Engenharia de software'
+  ];
+  filteredOptions: Observable<string[]>;
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 }
 
@@ -92,5 +132,5 @@ export interface FakeData {
 }
 
 const ELEMENT_DATA: FakeData[] = [
-  { user_name: 'Antônio Campos', user_role: 'Estudante', curso_nivel: 'Mestrado Profissional', curso_nome: 'Engenharia de Software', user_mail: 'antonio@cesar.school', user_obs: 'Nenhuma'}
+  { user_name: 'Antônio Campos', user_role: 'Estudante', curso_nivel: 'Mestrado Profissional', curso_nome: 'Engenharia de Software', user_mail: 'antonio@cesar.school', user_obs: 'Nenhuma' }
 ];

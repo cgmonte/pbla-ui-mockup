@@ -2,8 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import { RouterModule, Routes } from "@angular/router";
-import { SharedModule } from './shared/shared.module'; // 👈 <-- Added
+import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './shared/components/login/login.component';
 // import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 import { AdmComponent } from './shared/components/adm/adm.component';
@@ -19,8 +20,41 @@ import { AnaProfeComponent } from './shared/components/ana-profe/ana-profe.compo
 import { EstudantesProfeComponent } from './shared/components/estudantes-profe/estudantes-profe.component';
 import { VisComponent } from './shared/components/vis/vis.component';
 import { VisEstudanteComponent } from './shared/components/vis-estudante/vis-estudante.component';
+import { MatFormFieldModule, } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+// import { A11yModule } from '@angular/cdk/a11y';
+// import { ClipboardModule } from '@angular/cdk/clipboard';
+// import { DragDropModule } from '@angular/cdk/drag-drop';
+// import { PortalModule } from '@angular/cdk/portal';
+// import { ScrollingModule } from '@angular/cdk/scrolling';
+// import { CdkStepperModule } from '@angular/cdk/stepper';
+// import { CdkTableModule } from '@angular/cdk/table';
+// import { CdkTreeModule } from '@angular/cdk/tree';
+// import { MatAutocompleteModule } from '@angular/material/autocomplete';
+// import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+// import { MatButtonToggleModule } from '@angular/material/button-toggle';
+// import { MatChipsModule } from '@angular/material/chips';
+// import { MatStepperModule } from '@angular/material/stepper';
+// import { MatDatepickerModule } from '@angular/material/datepicker';
+// import { MatDialogModule } from '@angular/material/dialog';
+// import { MatDividerModule } from '@angular/material/divider';
+// import { MatGridListModule } from '@angular/material/grid-list';
+// import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+// import { MatProgressBarModule } from '@angular/material/progress-bar';
+// import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+// import { MatRadioModule } from '@angular/material/radio';
+// import { MatSnackBarModule } from '@angular/material/snack-bar';
+// import { MatTabsModule } from '@angular/material/tabs';
+// import { MatTreeModule } from '@angular/material/tree';
+// import { OverlayModule } from '@angular/cdk/overlay';
+
 
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
@@ -45,9 +79,43 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     SharedModule,
     RouterModule.forRoot(appRoutes),
-    AppRoutingModule
+    AppRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+    // A11yModule,
+    // ClipboardModule,
+    // DragDropModule,
+    // PortalModule,
+    // ScrollingModule,
+    // CdkStepperModule,
+    // CdkTableModule,
+    // CdkTreeModule,
+    // MatAutocompleteModule,
+    // MatBottomSheetModule,
+    // MatButtonToggleModule,
+    // MatChipsModule,
+    // MatStepperModule,
+    // MatDatepickerModule,
+    // MatDialogModule,
+    // MatDividerModule,
+    // MatGridListModule,
+    // MatNativeDateModule, MatRippleModule,
+    // MatProgressBarModule,
+    // MatProgressSpinnerModule,
+    // MatRadioModule,
+    // MatSelectModule,
+    // MatSnackBarModule,
+    // MatTabsModule,
+    // MatTreeModule,
+    // OverlayModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+
+}

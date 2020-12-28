@@ -3,6 +3,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-turmas',
@@ -76,9 +79,54 @@ export class TurmasComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.disc_nome + 1}`;
   }
 
+  myControl = new FormControl();
+  options: string[] = [
+    'Graduação em Ciência da computação',
+    'Graduação em Design',
+    'Mestrado profissional em Design',
+    'Mestrado profissional em Engenharia de software'
+  ];
+  filteredOptions: Observable<string[]>;
+
+  disciplinasControl = new FormControl();
+  options_disciplinas: string[] = [
+    'Processos de software',
+    'Requisitos e interfaces',
+    'Gestão de projetos',
+    'Verificação e validação',
+    'Arquitetura de software',
+    'Tópicos de construção SW',
+    'Interoperabilidade',
+    'Metodologia científica'
+  ];
+  filteredDisciplinasOptions: Observable<string[]>;
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+
+    this.filteredDisciplinasOptions = this.disciplinasControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(dsic_value => this._disc_filter(dsic_value))
+      );
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  private _disc_filter(dsic_value: string): string[] {
+    const disciplinafilterValue = dsic_value.toLowerCase();
+
+    return this.options_disciplinas.filter(options_disciplinas => options_disciplinas.toLowerCase().includes(disciplinafilterValue));
   }
 }
 
@@ -92,5 +140,5 @@ export interface FakeData {
 
 const ELEMENT_DATA: FakeData[] = [
   { disc_nome: "Processos de software", turma_semestre: '2020.2', curso_nome: "Engenharia de software", turma_qte_estudantes: '20', turma_obs: "Nenhuma" }
-  
+
 ];
