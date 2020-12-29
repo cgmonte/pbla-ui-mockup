@@ -1,64 +1,64 @@
-// Define a cor do texto do botão "sair"
-.mat-flat-button {
-    color: white;
-}
-
-// Define a cor do título do site, PBL Analytics, na barra superior, canto esquerdo.
-.toolbar-title {
-    color: #01579b;
-}
-
-// Espaçador entre o título do site e botões à direita
-.spacer {
-    flex: 1 1 auto;
-}
-
-// Espaçador entre-botões
-#side-by-side-button {
-    margin-left: 10px;
-}
-
-// formatação da indicação de versão alpha
-#alpha {
-    color: #01589b49;
-    margin-left: 10px;
-    margin-top: 0.50vh;
-}
-
-// Não apagar. Ainda investigando o comportamento da scrollbar, quando e como esconde-la etc.
-// .body {
-//     overflow-y: hidden;
+// // Define a cor do texto do botão "sair"
+// .mat-flat-button {
+//     color: white;
 // }
 
-.fist-child {
-    max-height: fit-content;
-}
+// // Define a cor do título do site, PBL Analytics, na barra superior, canto esquerdo.
+// .toolbar-title {
+//     color: #01579b;
+// }
 
-.second-child {
-    height: 85vh;
-    margin-top: 2%;
-    margin-left: 3%;
-    margin-right: 3%;
+// // Espaçador entre o título do site e botões à direita
+// .spacer {
+//     flex: 1 1 auto;
+// }
 
-    .sidenav-container {
-        // o container do sidenav inteiro, que utilizamos para mostrar o conteúdo principal do site, precisa ocupar 100% do espaço disponível na tela.
-        height: 100%;
+// // Espaçador entre-botões
+// #side-by-side-button {
+//     margin-left: 10px;
+// }
 
-        .mat-sidenav {
-            padding: 2vh;
-            // Por enquanto é desnecessário definir uma largura
-            // width: 20vh;
-            .mat-list-item {
-                color: #01579b;
-            }
-        }
+// // formatação da indicação de versão alpha
+// #alpha {
+//     color: #01589b49;
+//     margin-left: 10px;
+//     margin-top: 0.50vh;
+// }
 
-        .mat-sidenav-content {
-            // Podemos definir uma cor de fundo específica, mas o tem já está sendo aplicado
-            // background-color: rgb(251, 251, 251);
-            padding-left: 3vh;
-            padding-right: 3vh;
-            padding-top: 4vh;
-        }
-    }
-}
+// // Não apagar. Ainda investigando o comportamento da scrollbar, quando e como esconde-la etc.
+// // .body {
+// //     overflow-y: hidden;
+// // }
+
+// .fist-child {
+//     max-height: fit-content;
+// }
+
+// .second-child {
+//     height: 85vh;
+//     margin-top: 2%;
+//     margin-left: 3%;
+//     margin-right: 3%;
+
+//     .sidenav-container {
+//         // o container do sidenav inteiro, que utilizamos para mostrar o conteúdo principal do site, precisa ocupar 100% do espaço disponível na tela.
+//         height: 100%;
+
+//         .mat-sidenav {
+//             padding: 2vh;
+//             // Por enquanto é desnecessário definir uma largura
+//             // width: 20vh;
+//             .mat-list-item {
+//                 color: #01579b;
+//             }
+//         }
+
+//         .mat-sidenav-content {
+//             // Podemos definir uma cor de fundo específica, mas o tem já está sendo aplicado
+//             // background-color: rgb(251, 251, 251);
+//             padding-left: 3vh;
+//             padding-right: 3vh;
+//             padding-top: 4vh;
+//         }
+//     }
+// }

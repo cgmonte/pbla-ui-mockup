@@ -1,81 +1,81 @@
-// Formata título da seção
-#section-title {
-    color: #00b0ff;
-    padding: 0px;
-    margin: 0px;
-}
-
-// Formata formulário de filtragem
-#form-field-filtro {
-    font-size: 10px;
-    margin-left: 20px;
-    margin-top: 2.5vh;
-    max-width: 20vh;
-}
-
-// Formata campos de formulário
-#form-field {
-    margin-top: 2em;
-}
-
-// Espaça botões da seção
-.title-buttons-spacer {
-    flex-grow: 100;
-}
-
-// Formata botões da seção
-#entity-buttons {
-    color: #01579b;
-    margin-top: 1%;
-}
-
-// Afasta botão excluir da margem
-#excluir-button {
-    margin-left: 10px;
-}
-
-//Formate container da tabela
-.table-container {
-    height: calc(81% - 6em);
-    overflow: auto;
-    margin-top: 5%;
-    margin-left: 1%;
-    margin-right: 1.6%;
-}
-
-//Formata container do formulário
-.form-container {
-    height: calc(81% - 6em);
-    overflow: auto;
-    margin-top: 5%;
-    margin-left: 2%;
-    margin-right: 1.6%;
-}
-
-// Formata tabela
-table {
-    width: 100%;
-    background-color: rgb(251, 251, 251);
-}
-
-// Formata container do paginador e paginador
-mat-paginator,
-.paginator-container {
-    background-color: rgb(251, 251, 251);
-}
-
-// Formata largura das colunas
-// td,
-// th {
-//     width: 15%;
+// // Formata título da seção
+// #section-title {
+//     color: #00b0ff;
+//     padding: 0px;
+//     margin: 0px;
 // }
 
-// .example-form {
-//     min-width: 150px;
-//     max-width: 500px;
+// // Formata formulário de filtragem
+// #form-field-filtro {
+//     font-size: 10px;
+//     margin-left: 20px;
+//     margin-top: 2.5vh;
+//     max-width: 20vh;
+// }
+
+// // Formata campos de formulário
+// #form-field {
+//     margin-top: 2em;
+// }
+
+// // Espaça botões da seção
+// .title-buttons-spacer {
+//     flex-grow: 100;
+// }
+
+// // Formata botões da seção
+// #entity-buttons {
+//     color: #01579b;
+//     margin-top: 1%;
+// }
+
+// // Afasta botão excluir da margem
+// #excluir-button {
+//     margin-left: 10px;
+// }
+
+// //Formate container da tabela
+// .table-container {
+//     height: calc(81% - 6em);
+//     overflow: auto;
+//     margin-top: 5%;
+//     margin-left: 1%;
+//     margin-right: 1.6%;
+// }
+
+// //Formata container do formulário
+// .form-container {
+//     height: calc(81% - 6em);
+//     overflow: auto;
+//     margin-top: 5%;
+//     margin-left: 2%;
+//     margin-right: 1.6%;
+// }
+
+// // Formata tabela
+// table {
 //     width: 100%;
-//   }
+//     background-color: rgb(251, 251, 251);
+// }
+
+// // Formata container do paginador e paginador
+// mat-paginator,
+// .paginator-container {
+//     background-color: rgb(251, 251, 251);
+// }
+
+// // Formata largura das colunas
+// // td,
+// // th {
+// //     width: 15%;
+// // }
+
+// // .example-form {
+// //     min-width: 150px;
+// //     max-width: 500px;
+// //     width: 100%;
+// //   }
   
-//   .example-full-width {
-//     width: 100%;
-//   }
+// //   .example-full-width {
+// //     width: 100%;
+// //   }

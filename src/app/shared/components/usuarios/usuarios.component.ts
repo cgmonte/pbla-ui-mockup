@@ -132,5 +132,5 @@ export interface FakeData {
 }
 
 const ELEMENT_DATA: FakeData[] = [
-  { user_name: 'Antônio Campos', user_role: 'Estudante', curso_nivel: 'Mestrado Profissional', curso_nome: 'Engenharia de Software', user_mail: 'antonio@cesar.school', user_obs: 'Nenhuma' }
+  { user_name: 'Patrícia Alencar', user_role: 'Estudante', curso_nivel: 'Mestrado Profissional', curso_nome: 'Engenharia de Software', user_mail: 'antonio@cesar.school', user_obs: 'Nenhuma' }
 ];

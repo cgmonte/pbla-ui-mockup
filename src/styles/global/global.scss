@@ -1,0 +1,52 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// Esconder scroll bar do site inteiro
+body::-webkit-scrollbar {
+    display: none;
+}
+// Não apagar. Ainda investigando o comportamento da scrollbar, quando e como esconde-la etc.
+// .body {
+//     overflow-y: hidden;
+// }
+
+#top-toolbar {
+    background-color: rgb(251, 251, 251);
+    
+    .toolbar-title {
+        color: #01579b;
+    }
+
+    #alpha {
+        color: #01589b49;
+        margin-left: 10px;
+        margin-top: 0.5vh;
+    }
+
+    .spacer {
+        flex: 1 1 auto;
+    }
+
+    #side-by-side-button {
+        margin-left: 10px;
+    }
+
+    #icone-pessoa {
+        margin-right: 5px;
+        margin-top: -5px;
+    }
+
+    #botao_sair {
+        margin-left: 1.2em;
+        color: white;
+    }
+}
+
+

@@ -17,7 +17,7 @@
             // retrieve particular color from variable, rg: text, base, divider, ...
             color: mat-color($foreground, text);
             // background-color: mat-color($background, card);
-            background-color: rgb(251, 251, 251);
+            background-color: white;
 
             // or use "default" subvariable by default, oh the puns :)
             border: 1px solid mat-color($accent);

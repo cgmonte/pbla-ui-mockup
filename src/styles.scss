@@ -33,22 +33,5 @@
 // @include angular-material-typography($typography);
 
 /* You can add global styles to this file, and also import other style files */
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-// Esconder scroll bar do site inteiro
-body::-webkit-scrollbar {
-    display: none;
-  }
-
-.mat-toolbar {
-    background-color: rgb(251, 251, 251);
-}
+@import "./styles/global/global.scss";
+@import "./styles/global/content.scss";

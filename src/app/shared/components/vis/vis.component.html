@@ -9,7 +9,7 @@
 <body>
     <div class="parent">
         <div class="first-child">
-            <mat-toolbar class=mat-elevation-z1>
+            <mat-toolbar class=mat-elevation-z1 id="top-toolbar">
                 <span>
                     <h1 class="toolbar-title">PBL Analytics</h1>
                 </span>
@@ -17,16 +17,17 @@
                 <span class="spacer"></span>
                 <button mat-button color="accent" id="side-by-side-button">Analytics</button>
                 <button mat-button color="accent" id="side-by-side-button">Configuração</button>
-                <a mat-flat-button color="primary" href="/login" id="side-by-side-button">Sair</a>
+                <button mat-button color="accent" id="side-by-side-button"><mat-icon id="icone-pessoa">person</mat-icon>Perfil do Professor</button>
+                <a mat-flat-button color="primary" href="/login" id="side-by-side-button" id="botao_sair">Sair</a>
             </mat-toolbar>
         </div>
         <div class="second-child">
             <mat-sidenav-container class="sidenav-container">
                 <!-- <mat-sidenav #sidenav mode="side" opened [attr.color]="themeColor"></mat-sidenav> -->
-                <mat-sidenav #sidenav mode="side" opened>
-                    <h3>Configurar visualizações dados</h3>
-                    <mat-accordion displayMode="flat" class="example-headers-align" multi>
-                        <mat-expansion-panel class="mat-elevation-z0">
+                <mat-sidenav #sidenav mode="side" opened id="vis-sidenav">
+                    <h3>Visualizar</h3>
+                    <mat-accordion displayMode="flat" multi>
+                        <mat-expansion-panel class="mat-elevation-z0" id="accordion">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     Documentos
@@ -37,7 +38,7 @@
                                     [routerLink]="['/vis', { outlets: { 'sidenav-content-outlet': 'estudante' } }]">
                                     Lista de documentos
                                 </mat-list-option>
-                                <mat-list-option class="mat-elevation-z0"
+                                <mat-list-option class=".mat-small"
                                     [routerLink]="['/vis', { outlets: { 'sidenav-content-outlet': 'estudante' } }]">
                                     Interações por documento</mat-list-option>
                                 <!-- <mat-list-option [routerLink]="['/adm', { outlets: { 'sidenav-content-outlet': 'disciplinas' } }]">Disciplinas</mat-list-option>
@@ -49,7 +50,7 @@
                     </mat-accordion>
 
                 </mat-sidenav>
-                <mat-sidenav-content>
+                <mat-sidenav-content id="main-content">
                     <div>
                         <router-outlet name="sidenav-content-outlet"></router-outlet>
                     </div>

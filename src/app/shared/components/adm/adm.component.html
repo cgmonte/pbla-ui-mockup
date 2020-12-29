@@ -11,7 +11,7 @@
     <div class="parent">
         <!-- A primeira div filha contem a barras superior (implmentada com o mat-toolbar), onde fica o botão de sair e outros elementos -->
         <div class="first-child">
-            <mat-toolbar class=mat-elevation-z1>
+            <mat-toolbar class=mat-elevation-z1 id="top-toolbar">
                 <span>
                     <h1 class="toolbar-title">PBL Analytics</h1>
                 </span>
@@ -19,7 +19,8 @@
                 <span class="spacer"></span>
                 <button mat-button color="accent" id="side-by-side-button">Analytics</button>
                 <button mat-button color="accent" id="side-by-side-button">Configuração</button>
-                <a mat-flat-button color="primary" href="/login" id="side-by-side-button">Sair</a>
+                <button mat-button color="accent" id="side-by-side-button"><mat-icon id="icone-pessoa">person</mat-icon>Perfil do Administrador</button>
+                <a mat-flat-button color="primary" href="/login" id="side-by-side-button" id="botao_sair">Sair</a>
             </mat-toolbar>
         </div>
         <!-- A segunda div filha contem um elemento mat-sidenav-container, onde implementamos o menu lateral e o conteúdo de cada item deste menu (Instituições, Cursos, Usuários etc.) -->

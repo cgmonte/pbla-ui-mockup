@@ -118,5 +118,5 @@ const ELEMENT_DATA: FakeData[] = [
   { disc_nome: "Arquitetura de software", curso_nivel: 'Mestrado Profissional', curso_nome: "Engenharia de software", disc_obs: "Nenhuma" },
   { disc_nome: "Tópicos de construção SW", curso_nivel: 'Mestrado Profissional', curso_nome: "Engenharia de software", disc_obs: "Nenhuma" },
   { disc_nome: "Interoperabilidade", curso_nivel: 'Mestrado Profissional', curso_nome: "Engenharia de software", disc_obs: "Nenhuma" },
-  { disc_nome: "Metodologia científica", curso_nivel: 'Mestrado Profissional', curso_nome: "Engenharia de software", disc_obs: "Nenhuma" }
+  { disc_nome: "Metodologia científica", curso_nivel: 'Mestrado Profissional', curso_nome: "Engenharia de software", disc_obs: "Nenhuma" },
 ];
